@@ -62,16 +62,17 @@ app.post('/', (req, res)=>{
 
     const url = req.body.url;
     let key = checkURL(url);
-    let value = getRandom();
+    let value;
+    //testing
+    fs.writeFileSync('output.txt', url);
 
-    fs.writeFileSync('output.txt', key);
     //some shit
     URL.findOne({urlLong: key}, function(err, docs) {
         if(err) {
             console.log(err); 
         } else if(docs) {
             value = docs.uniqueCode;
-            console.log(docs);
+            // console.log(docs);
             let finalURL = getFinalURL(key, value);
             res.status(200).render('index.pug', {finalURL});
         } else {
@@ -93,27 +94,18 @@ app.post('/', (req, res)=>{
         }
     });
     
-    
     //redirecting to LONG URL when short url is entered
-    app.get("/" + value, (req, res) => {
-
-        // URL.findOne({uniqueCode: value}, function(err, docs) {
-        //     if(err) {
-        //         console.log(err); 
-        //     } else if(docs) {
-        //         key = docs.urlLong;
-        //         console.log(docs);
-        //     } else {
-        //         console.log("some shit happened");
-        //     }
-        // });
-
-        const data = fs.readFileSync('output.txt', 'utf8')
-        console.log(data);
-        res.status(301).redirect(data);
-        
-        
+    app.get("/:value", (req, res) => {
+        URL.findOne({uniqueCode: value}, function(err, docs) {
+            if(err) {
+                console.log(err); 
+            } else {
+                key = docs.urlLong;
+            }
+        });
+        res.status(301).redirect(key);
     });
+    
 });
 
 const port = 80;
