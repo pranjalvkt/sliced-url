@@ -41,11 +41,11 @@ function getRandom(){
 }
 function getFinalURL(key, value) {
     if (key.startsWith("http://")) {
-        return "http://dinky.herokuapp.com/" + value;
+        return "http://slicedurl.herokuapp.com/" + value;
     } else if(key.startsWith("https://")) {
-        return "https://dinky.herokuapp.com/" + value;
+        return "https://slicedurl.herokuapp.com/" + value;
     } else if(key.startsWith("ftp://")){
-        return "ftp://dinky.herokuapp.com/" + value;
+        return "ftp://slicedurl.herokuapp.com/" + value;
     } else {
         console.log("Oops ! Some error occured.");
     }
@@ -64,7 +64,6 @@ app.get('/addNew', (req, res)=>{
             res.render("addNew.pug", {urls: urls});
         }
     })
-    // res.render("addNew.pug");
 });
 
 //redirecting to LONG URL when short url is entered
@@ -91,7 +90,6 @@ app.post('/', (req, res)=>{
             console.log(err); 
         } else if(docs) {
             value = docs.uniqueCode;
-            // console.log(docs);
             let finalURL = getFinalURL(key, value);
             res.status(200).render('index.pug', {finalURL});
         } else {
@@ -116,6 +114,6 @@ app.post('/', (req, res)=>{
 
 const port = 80;
 
-app.listen(port, ()=>{
-    console.log("Server started at port", port);
-})
+app.listen(process.env.PORT || port, () => {
+    console.log("Server started on port" + port);
+});
