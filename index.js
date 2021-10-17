@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require("path");
 const app = express();
-const fs = require('fs');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -54,17 +53,37 @@ function getFinalURL(key, value) {
 
 //It will render for the very first time
 app.get('/', (req, res)=>{
-    res.render("index.pug");
+    res.render("index.pug")
 });
 
+app.get('/addNew', (req, res)=>{
+    URL.find(function(err, urls) {
+        if(err) {
+           console.log(err);
+        } else {
+            res.render("addNew.pug", {urls: urls});
+        }
+    })
+    // res.render("addNew.pug");
+});
+
+//redirecting to LONG URL when short url is entered
+app.get("/:value", (req, res) => {
+    value = req.url.slice(1);
+    URL.findOne({uniqueCode: value}, function(err, docs) {
+        if(err) {
+            console.log(err); 
+        } else {
+            key = docs.urlLong;
+            res.status(301).redirect(key);
+        }
+    });
+});
 
 app.post('/', (req, res)=>{
-
     const url = req.body.url;
     let key = checkURL(url);
     let value;
-    //testing
-    fs.writeFileSync('output.txt', url);
 
     //some shit
     URL.findOne({urlLong: key}, function(err, docs) {
@@ -93,19 +112,6 @@ app.post('/', (req, res)=>{
             });
         }
     });
-    
-    //redirecting to LONG URL when short url is entered
-    app.get("/:value", (req, res) => {
-        URL.findOne({uniqueCode: value}, function(err, docs) {
-            if(err) {
-                console.log(err); 
-            } else {
-                key = docs.urlLong;
-            }
-        });
-        res.status(301).redirect(key);
-    });
-    
 });
 
 const port = 80;
