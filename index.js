@@ -41,20 +41,18 @@ function getRandom(){
 }
 function getFinalURL(key, value) {
     if (key.startsWith("http://")) {
-        return "http://slicedurl.herokuapp.com/" + value;
+        return "http://dinky.herokuapp.com/" + value;
     } else if(key.startsWith("https://")) {
-        return "https://slicedurl.herokuapp.com/" + value;
+        return "https://dinky.herokuapp.com/" + value;
     } else if(key.startsWith("ftp://")){
-        return "ftp://slicedurl.herokuapp.com/" + value;
+        return "ftp://dinky.herokuapp.com/" + value;
     } else {
         console.log("Oops ! Some error occured.");
     }
 }
 
 //It will render for the very first time
-app.get('/', (req, res)=>{
-    res.render("index.pug")
-});
+
 
 app.get('/addNew', (req, res)=>{
     URL.find(function(err, urls) {
@@ -66,17 +64,27 @@ app.get('/addNew', (req, res)=>{
     })
 });
 
+app.get('/', (req, res)=>{
+    res.render("index.pug")
+});
+
 //redirecting to LONG URL when short url is entered
 app.get("/:value", (req, res) => {
     value = req.url.slice(1);
-    URL.findOne({uniqueCode: value}, function(err, docs) {
-        if(err) {
-            console.log(err); 
-        } else {
-            key = docs.urlLong;
-            res.status(301).redirect(key);
-        }
-    });
+    if (value == 'favicon.ico') {
+        res.render("index.pug")
+    } else {
+        console.log(value);
+        URL.findOne({uniqueCode: value}, function(err, docs) {
+            if(err) {
+                console.log(err); 
+            } else {
+                let key = docs.urlLong;
+                console.log(key);
+                res.status(301).redirect(key);
+            }
+        });
+    }
 });
 
 app.post('/', (req, res)=>{
@@ -114,6 +122,6 @@ app.post('/', (req, res)=>{
 
 const port = 80;
 
-app.listen(process.env.PORT || port, () => {
-    console.log("Server started on port" + port);
-});
+app.listen(port, ()=>{
+    console.log("Server started at port", port);
+})
