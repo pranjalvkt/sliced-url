@@ -106,7 +106,7 @@ app.post('/', (req, res)=>{
             res.status(200).render('index.pug', {finalURL});
             const mong = new URL ({
                 urlLong: key,
-                uniqueCode: finalURL
+                uniqueCode: value
             });
             URL.insertMany([mong], function(err){
                 if(err) {
