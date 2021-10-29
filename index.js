@@ -4,12 +4,11 @@ const path = require("path");
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 app.set("view engine", "pug"); // Set the template engine as pug
 app.set("views", path.join(__dirname, "views")); // Set the views directory
 
 //Code related to mongodb
-const db = 'mongodb://localhost/url-shortner';
+const db = 'mongodb+srv://admin-pranjal:Test123@cluster0.iew4o.mongodb.net/url-shortner';
 
 mongoose.connect(db, {
     useNewUrlParser : true,
@@ -40,30 +39,30 @@ function getRandom(){
     return random_string;
 }
 function getFinalURL(key, value) {
-    if (key.startsWith("http://")) {
-        return "http://dinky.herokuapp.com/" + value;
-    } else if(key.startsWith("https://")) {
-        return "https://dinky.herokuapp.com/" + value;
-    } else if(key.startsWith("ftp://")){
-        return "ftp://dinky.herokuapp.com/" + value;
+    if (key.startsWith("http://") || key.startsWith("https://") || key.startsWith("ftp://")) { // remove https condition when deploying on heroku
+        return "http://localhost/" + value;
+    // } else if(key.startsWith("https://")) { // uncomment out these statements as well
+    //     return "https://localhost/" + value;
+    // } else if(key.startsWith("ftp://")){
+    //     return "ftp://localhost/" + value;
     } else {
         console.log("Oops ! Some error occured.");
     }
 }
 
-//It will render for the very first time
 
-
-app.get('/addNew', (req, res)=>{
+// it will show the entries stored in the database
+app.get('/showdb', (req, res)=>{
     URL.find(function(err, urls) {
         if(err) {
            console.log(err);
         } else {
-            res.render("addNew.pug", {urls: urls});
+            res.render("showdb.pug", {urls: urls});
         }
     })
 });
 
+//It will render for the very first time
 app.get('/', (req, res)=>{
     res.render("index.pug")
 });
@@ -77,7 +76,7 @@ app.get("/:value", (req, res) => {
         console.log(value);
         URL.findOne({uniqueCode: value}, function(err, docs) {
             if(err) {
-                console.log(err); 
+                console.log(err + "Enter a valid Short URL"); 
             } else {
                 let key = docs.urlLong;
                 console.log(key);
@@ -92,7 +91,7 @@ app.post('/', (req, res)=>{
     let key = checkURL(url);
     let value;
 
-    //some shit
+    
     URL.findOne({urlLong: key}, function(err, docs) {
         if(err) {
             console.log(err); 
@@ -101,7 +100,7 @@ app.post('/', (req, res)=>{
             let finalURL = getFinalURL(key, value);
             res.status(200).render('index.pug', {finalURL});
         } else {
-            // mongoose
+            
             value = getRandom();
             let finalURL = getFinalURL(key, value);
             res.status(200).render('index.pug', {finalURL});
