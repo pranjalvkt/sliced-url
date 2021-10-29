@@ -39,12 +39,12 @@ function getRandom(){
     return random_string;
 }
 function getFinalURL(key, value) {
-    if (key.startsWith("http://") || key.startsWith("https://") || key.startsWith("ftp://")) { // remove https condition when deploying on heroku
-        return "http://localhost/" + value;
-    // } else if(key.startsWith("https://")) { // uncomment out these statements as well
-    //     return "https://localhost/" + value;
-    // } else if(key.startsWith("ftp://")){
-    //     return "ftp://localhost/" + value;
+    if (key.startsWith("http://")) { // remove https condition when deploying on heroku
+        return "http://slicedurl.herokuapp.com/" + value;
+    } else if(key.startsWith("https://")) { // uncomment out these statements as well
+        return "https://slicedurl.herokuapp.com/" + value;
+    } else if(key.startsWith("ftp://")){
+        return "ftp://slicedurl.herokuapp.com/" + value;
     } else {
         console.log("Oops ! Some error occured.");
     }
