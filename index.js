@@ -9,8 +9,8 @@ app.set("view engine", "pug"); // Set the template engine as pug
 app.set("views", path.join(__dirname, "views")); // Set the views directory
 
 //Code related to mongodb
-const db = secret.db();
-// const db = 'mongodb+srv://admin-pranjal:Test123@cluster0.iew4o.mongodb.net/url-shortner';
+// const db = secret.db();
+const db = 'mongodb+srv://admin-pranjal:Test123@cluster0.iew4o.mongodb.net/url-shortner';
 
 mongoose.connect(db, {
     useNewUrlParser : true,
