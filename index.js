@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require("path");
-const secret = require("./secret");
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -9,7 +8,6 @@ app.set("view engine", "pug"); // Set the template engine as pug
 app.set("views", path.join(__dirname, "views")); // Set the views directory
 
 //Code related to mongodb
-// const db = secret.db();
 const db = 'mongodb+srv://admin-pranjal:Test123@cluster0.iew4o.mongodb.net/url-shortner';
 
 mongoose.connect(db, {
