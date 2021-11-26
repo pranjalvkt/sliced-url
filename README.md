@@ -1,105 +1,46 @@
-**INDUSTRIAL TRAINING REPORT**
+**Problem Definition** 
 
-**On**
+In today&#39;s growing world, almost every single thing is directly or indirectly done by a Website, In our day-to-day life we access website using some URL, these URL&#39;s are sometime quite long to remember and for an Average person it may be painful, to overcome this kind of difficulty **URL Shorteners** are used.
 
-The Complete 2021 Web Development Bootcamp
+URL shortening is a technique on the World Wide Web in which a Uniform Resource Locator (URL) may be made substantially shorter and still direct to the required page. This is achieved by using a redirect which links to the web page that has a long URL.
 
-_Submitted by_
+There are several reasons to use URL shortening. Often regular un-shortened links may be aesthetically unpleasing. Many web developers pass descriptive attributes in the URL to represent data hierarchies, command structures, transaction paths or session information. This can result in URLs that are hundreds of characters long and that contain complex character patterns. Such URLs are difficult to memorize, type out or distribute. As a result, long URLs must be copied and pasted for reliability. Thus, short URLs may be more convenient for websites or hard copy publications (e.g. a printed magazine or a book), the latter often requiring that very long strings be broken into multiple lines (as is the case with some e-mail software or internet forums) or truncated.
 
+**Software Configuration**
 
-**Pranjal Tripathi**
+This website is developed using Node.js (Express Framework). is a back end web application framework for Node.js, released as free and open-source software under the MIT License. It is designed for building web applications and APIs.
 
-1812213072
+**Version: ^** 4.17.1
 
+**Developers:** TJ Holowaychuk, StrongLoop and others.
 
-_in partial fulfilment for the award of the degree_
+**License:** MIT License
 
-_of_
+**Operating system:** Windows 10
 
-**BACHELOR OF TECHNOLOGY**
+**Database:** MongoDB
 
-**In**
+**Software tools used**
 
-**Information Technology**
+The whole Project is divided in two parts the front end and the back end.
 
-![image](https://user-images.githubusercontent.com/64363696/143561458-606c3f9a-e91d-4466-8137-fdfa6c38b5e6.png)
+*FRONT-END*
 
-**SHRI RAMSWAROOP MEMORIAL GROUP OF**
+The front end is designed using of JavaScript (Angular5), CSS, HTML etc.
 
-**PROFESSIONAL COLLEGES, LUCKNOW**
+*BACK END*
 
-**Affiliated to**
-
-**Dr. A.P.J. Abdul Kalam Technical University, Lucknow**
-
-**CERTIFICATE**
-
-![image](https://user-images.githubusercontent.com/64363696/143561964-99fc277c-7a48-4d18-9d24-2440fd76b1b5.png)
+The Back-end is designed using Node.js and MongoDB.
 
 
-**ACKNOWLEDGEMENT**
+**Overview**
 
-It is a great pleasure for me to acknowledge the assistance and contributions of a large number of individuals in designing this report.
+[https://slicedurl.herokuapp.com](https://slicedurl.herokuapp.com/) generates a short URL corresponding long URL. URL shortening is a technique on the [World Wide Web](https://en.wikipedia.org/wiki/World_Wide_Web) in which a [Uniform Resource Locator](https://en.wikipedia.org/wiki/Uniform_Resource_Locator) (URL) may be made substantially shorter and still direct to the required page. This is achieved by using a [redirect](https://en.wikipedia.org/wiki/URL_redirection) which links to the [web page](https://en.wikipedia.org/wiki/Web_page) that has a long URL. For example, the URL &quot;[https://www.udemy.com/course/the-complete-web-development-bootcamp/learn/lecture/12385812#overview/](https://www.udemy.com/course/the-complete-web-development-bootcamp/learn/lecture/12385812#overview/)&quot; can be shortened to &quot;[https://slicedurl.herokuapp.com/46acdp](https://slicedurl.herokuapp.com/46acdp)&quot;.
 
-To make a report and deal with a practical world is not so easy work if not get support by others. Therefore, I feel grateful to and wish my profound indebtedness to Er. Anjani Kumar, Assistant Professor, Department of IT, Shri Ramswaroop Memorial College of Engineering and Management, Lucknow.
+Other uses of URL shortening are to &quot;beautify&quot; a link, track clicks, or disguise the underlying address. Although disguising of the underlying address may be desired for legitimate business or personal reasons, it is open to abuse. Some URL shortening service providers have found themselves on spam [blocklists](https://en.wikipedia.org/wiki/Blocklist), because of the use of their redirect services by sites trying to bypass those very same blocklists. Some websites prevent short, redirected URLs from being posted.
 
-And finally, but immensely express my utmost gratitude to my parents for their love and support, affection and inspiration. Without them, I would not have been able to complete this project.
+In URL shortening, every long URL is associated with a [unique key](https://en.wikipedia.org/wiki/Unique_key), which is the part after its [top-level domain name](https://en.wikipedia.org/wiki/Top-level_domain_name). For example, https://tinyurl.com/m3q2xt has a key of m3q2xt. Not all redirection is treated equally; the redirection instruction sent to a browser can contain in its header the [HTTP status](https://en.wikipedia.org/wiki/HTTP_status) 301 (Moved Permanently), 302 (Found), 307 (Temporary Redirect) or 308 (Permanent Redirect).
 
-**Pranjal Tripathi**
+The overall system design objective is to provide an efficient, modular design that will reduce the system&#39;s complexity, facilitate change and result in an easy implementation. This will be accomplished by designing a strongly cohesion system with minimal coupling. In additional, this document will provide interface design models that are consistent, user friendly, and will provide straightforward transitions through the various system functions
 
-**1812213072**
-
-**IT-73**
-
-**ABSTRACT**
-
-This internship report is for in partial fulfilment for the award of the degree B. Tech at Shri Ramswaroop Memorial College of Engineering and Management. This internship mainly covers **&quot;**** The Complete 2021 Web Development Bootcamp&quot; **at an online learning platform named, UDEMY Inc. In this internship main focus was on technologies like**&quot;HTML, CSS **,** JavaScript, MongoDB, Node.Js ****.****&quot; **These technologies tend to solve real life problems in web development domain like, Creating a website From** Front-end (UI-Part) **to Connecting it with** Back-end (Server-Part) **including the synchronisation with** database(MongoDB &amp;****MySQL)**.
-
-Solving real life problems was another key issue and try to gain experience. This report go through all the details of every knowledge and experience gathered during this internship period.
-
-**TABLE OF CONTENTS**
-
-Certificate ii
-
-Acknowledgement iii
-
-Abstract iv
-
-Table Of Contents v - vi
-
-1. **Chapter 1**
-
-1. Background 1
-2. Purpose of Internship 2
-3. Internship Objectives 2
-4. Scope of the Internship report 3
-5. Problem Definition 3
-6. Introduction to the Company 4
-
-1. **Chapter 2**
-
-1. Software Configuration 5
-2. Software tools used 5
-
-1. FRONT END 5
-2. BACK END 7
-
-1. Hardware tools used 7
-2. Data Requirement 8
-
-1. **Chapter 3**
-
-1. Overview 9
-2. System Architecture 10
-3. Activity Diagram 11
-
-1. **Chapter 4**
-
-1. Software Installation 12
-2. Deployment over Heroku Server 21
-3. Full view of Project 22
-4. Conclusion 24
-
-1. **References** 25
-
-v
+The purpose of design phase is to plan a solution for problem specified by the requirements. System design aims is to identify the modules that should be in the system the specification of these modules and how they interact with each other to produce the desired result. The goal of the design process is to produce a module or representation of a system which can be used later to build that system. The produced model is called design of the system. The most important phase of the software of the system is designing the different modules. The accurate planning and proper interconnections with the modules will give a good output in the implementation part.
