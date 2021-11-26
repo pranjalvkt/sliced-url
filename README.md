@@ -6,15 +6,10 @@ The Complete 2021 Web Development Bootcamp
 
 _Submitted by_
 
-Pranjal Tripathi
+
+#Pranjal Tripathi
 
 1812213072
-
-_Under the Guidance of_
-
-# PROF. ANAJNI KUMAR
-
-#
 
 
 _in partial fulfilment for the award of the degree_
